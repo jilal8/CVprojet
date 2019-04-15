@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="title">Accueil</ui:define>
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="homePersons.css"></h:outputStylesheet>
+		<h1>
+			<h:outputText value="Bienvenu" />
+		</h1>
+		<h:form>
+			<p:dataTable var="person" value="#{personBean.persons}"  widgetVar="carsTable"
+				emptyMessage="No cars found with given criteria"
+				filteredValue="#{personBean.filteredPersons}">
+
+				<f:facet name="header">
+					<p:outputPanel>
+						<h:outputText value="Search all fields:" />
+						<p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()"
+							style="width:150px" placeholder="Enter keyword" />
+					</p:outputPanel>
+				</f:facet>
+
+				<p:column filterBy="#{person.name}" headerText="Nom"
+					footerText="contains" filterMatchMode="contains">
+					<h:outputText value="#{person.name}" />
+				</p:column>
+
+				<p:column filterBy="#{person.firstname}" headerText="Prénom"
+					footerText="lte" filterMatchMode="contains">
+					<h:outputText value="#{person.firstname}" />
+				</p:column>
+
+								
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

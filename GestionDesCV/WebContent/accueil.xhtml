@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="title">Accueil</ui:define>
+	<ui:define name="content">
+		<h1>
+			<h:outputText value="Bienvenu" />
+		</h1>
+		<h:form>
+			<p:dataTable var="person" value="#{personBean.persons}" rows="10"
+				paginator="true"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Nom" styleClass="text-center">
+					<h:outputText value="#{person.name}" />
+				</p:column>
+
+				<p:column headerText="Prénom" styleClass="text-center">
+					<h:outputText value="#{person.firstname}" />
+				</p:column>
+
+				<p:column headerText="Date de naissance" styleClass="text-center">
+					<h:outputText value="#{person.birthday}" />
+				</p:column>
+
+				<p:column headerText="Adresse email" styleClass="text-center">
+					<h:outputText value="#{person.getRegisteredUser().email}" />
+				</p:column>
+
+				<p:column headerText="Site web" styleClass="text-center">
+					<h:outputText value="#{person.website}" />
+				</p:column>
+
+				<p:column headerText="Actions" styleClass="text-center">
+					<h:commandLink value="Voir CV" styleClass="btn btn-success btn-xs"
+						action="#{personBean.showPerson(person.id)}" />
+				</p:column>
+
+				<f:facet name="paginatorTopLeft">
+					<p:commandButton type="button" icon="pi pi-refresh" />
+				</f:facet>
+
+				<f:facet name="paginatorBottomRight">
+					<p:commandButton type="button" icon="pi pi-cloud-upload" />
+				</f:facet>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

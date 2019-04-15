@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"">
+
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="title">Connexion</ui:define>
+	<ui:define name="content">
+		<h:outputStylesheet library="css" name="connexion.css" />
+		<div class="container well well-center">
+			<h1 class="text-center text-primary">Connexion</h1>
+			<h:form>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-user"></span>
+						</div>
+						<h:inputText id="email" placeholder="Adresse email"
+							 styleClass="form-control" required="true" />
+					</div>
+					<br />
+					<div class="input-group">
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-lock"></span>
+						</div>
+						<h:inputSecret id="password" placeholder="Mot de passe"
+							styleClass="form-control" required="true" />
+					</div>
+				</div>
+				<h:commandButton id="login" value="Se connecter"
+					styleClass="btn btn-primary btn-lg btn-block" />
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+<input type="text" class="form-control" id="email"
+	placeholder="Adresse email" />
+<input type="password" class="form-control" id="password"
+	placeholder="Mot de passe" />
+<button type="submit" class="btn btn-primary btn-lg btn-block">Se
+	connecter</button>
+</html>
